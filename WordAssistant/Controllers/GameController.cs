@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using WordAssistant.Models;
 
 namespace WordAssistant.Controllers
 {
@@ -20,6 +21,20 @@ namespace WordAssistant.Controllers
         {
             var games = repo.GetAllGames();
             return View(games);
+        }
+        public IActionResult UpdateGame(int id)
+        {
+            Game game = repo.GetGame(id);
+            if (game == null)
+            {
+                return View("GameNotFound");
+            }
+            return View(game);
+        }
+        public IActionResult UpdateGameToDatabase(Game game)
+        {
+            repo.UpdateGame(game);
+            return RedirectToAction("ViewGame", new { id = game.WordID });
         }
         public IActionResult ViewGame(int id)
         {

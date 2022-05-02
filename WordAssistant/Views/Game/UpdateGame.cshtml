@@ -1,0 +1,7 @@
+﻿@model Game
+				
+<h2>Update @Model.WordID</h2>
+				
+@using (Html.BeginForm("UpdateGameToDatabase", "Game", "Post")){    <input asp-for="WordID" type="hidden" value="@Model.WordID" />    
+    <label asp-for="WordID" class="control-label">WordID</label>
+	<input type="number" name="WordID" class="form-control" value="@Model.WordID" />        <label asp-for="WinLoss" class="control-label">WinLoss</label>    <input type="number" step="1" name="WinLoss" class="form-control" value="@Model.WinLoss" />    // WinLoss needs to be a Select dropdown, either Win (1) or Loss (0), see bookmark    <label asp-for="Date" class="control-label">Date</label>    <input type="date" step="1" name="Date" class="form-control" value="@Model.Date" />    // Date needs a Date Picker, see bookmark        <input type="submit" value="Update Game" class="btn btn-primary" />}

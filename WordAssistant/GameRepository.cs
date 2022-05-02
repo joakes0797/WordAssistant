@@ -21,5 +21,11 @@ namespace WordAssistant
         {
             return _conn.QuerySingle<Game>("SELECT * FROM games WHERE WordID = @id", new { id = id });
         }
+
+        public void UpdateGame(Game game)
+        {
+            _conn.Execute("UPDATE games SET WordID = @WordID, WinLoss = @WinLoss, Date = @Date WHERE WordID = @id",
+            new { WordID = game.WordID, WinLoss = game.WinLoss, Date = game.Date, id = game.WordID });
+        }
     }
 }
