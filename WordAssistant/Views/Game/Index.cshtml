@@ -1,0 +1,7 @@
+﻿@model IEnumerable<Game>
+				
+<h2>Games</h2><table class="table">    <tr>        <th>Word ID</th>        <th>WinLoss</th>        <th>Date</th>    </tr>
+				
+@foreach (var game in Model)    {        <tr>            <td>@game.WordID</td>            <td>@game.WinLoss</td>            <td>@game.Date</td>        </tr>    }
+				
+</table>
