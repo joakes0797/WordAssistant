@@ -16,5 +16,10 @@ namespace WordAssistant
         {
             return _conn.Query<Game>("SELECT * FROM games;");
         }
+
+        public Game GetGame(int id)
+        {
+            return _conn.QuerySingle<Game>("SELECT * FROM games WHERE WordID = @id", new { id = id });
+        }
     }
 }

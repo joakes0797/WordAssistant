@@ -21,5 +21,10 @@ namespace WordAssistant.Controllers
             var games = repo.GetAllGames();
             return View(games);
         }
+        public IActionResult ViewGame(int id)
+        {
+            var game = repo.GetGame(id);
+            return View(game);
+        }
     }
 }
