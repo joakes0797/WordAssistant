@@ -10,6 +10,11 @@ namespace WordAssistant.Controllers
     public class GameController : Controller
     {
         private readonly IGameRepository repo;
+        public IActionResult DeleteGame(Game game)
+        {
+            repo.DeleteGame(game);
+            return RedirectToAction("Index");
+        }
 
         public GameController(IGameRepository repo)
         {

@@ -20,6 +20,10 @@ namespace WordAssistant
             game.Word = wordList;
             return game;
         }
+        public void DeleteGame(Game game)
+        {
+            _conn.Execute("DELETE FROM games WHERE GameID = @id;", new { id = game.GameID });
+        }
         public IEnumerable<Game> GetAllGames()
         {
             return _conn.Query<Game>("SELECT * FROM games;");
