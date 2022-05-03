@@ -6,7 +6,10 @@ namespace WordAssistant
     public interface IGameRepository
     {
         public IEnumerable<Game> GetAllGames();
-        public Game GetGame(int id);  //to the user, parameter will be a string, but here I need it to be an int
+        public Game GetGame(int id);
         public void UpdateGame(Game game);
+        public void InsertGame(Game gameToInsert);
+        public IEnumerable<Words> GetWords();  
+        public Game AssignWord(); //needs more work
     }
 }

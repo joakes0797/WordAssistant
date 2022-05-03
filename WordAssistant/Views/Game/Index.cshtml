@@ -1,7 +1,24 @@
 ﻿@model IEnumerable<Game>
 				
-<h2>Games</h2><table class="table">    <tr>        <th>Word ID</th>        <th>WinLoss</th>        <th>Date</th>    </tr>
+<h2>Games</h2>
+
+<div style="display: block">
+     <a href="/Game/InsertGame/">Log a New Game</a>
+ </div>
+<table class="table">
+    <tr>
+        <th>Word ID</th>
+        <th>WinLoss</th>
+        <th>Date</th>
+    </tr>
 				
-@foreach (var game in Model)    {        <tr>            <td><a href=/Game/ViewGame/@game.WordID>@game.WordID</a></td>            <td>@game.WinLoss</td>            <td>@game.Date</td>        </tr>    }
+@foreach (var game in Model)
+    {
+        <tr>
+            <td><a href=/Game/ViewGame/@game.GameID>@game.WordID</a></td>
+            <td>@game.WinLoss</td>
+            <td>@game.Date</td>
+        </tr>
+    }
 				
 </table>

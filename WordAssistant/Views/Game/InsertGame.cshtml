@@ -1,0 +1,31 @@
+﻿@model Game
+				
+<h2>Log a New Game</h2>
+				
+@using (Html.BeginForm("InsertGameToDatabase", "Game", "Post"))
+{
+    <input asp-for="GameID" type="hidden" value="" />
+    
+    <label asp-for="WordID" class="control-label">WordID</label>
+	<input type="number" name="WordID" class="form-control" value="" />
+    
+    <label asp-for="WinLoss" class="control-label">WinLoss</label>
+    <input type="number" step="1" name="WinLoss" class="form-control" value="@Model.WinLoss" />
+    // WinLoss needs to be a Select dropdown, either Win (1) or Loss (0), see bookmark
+
+    <label asp-for="Date" class="control-label">Date</label>
+    <input type="date" step="1" name="Date" class="form-control" value="@Model.Date" />
+    // Date needs a Date Picker, see bookmark
+				
+<div class="form-group">
+        <label for="">Select a Word</label>
+        <select class="form-control" name="WordID" value="">
+            @foreach (var cat in Model.Word)
+            {
+                <option value="@cat.WordID">@cat.WordID @cat.Word</option>
+            }
+        </select>
+    </div>
+    
+    <input type="submit" value="Log Game" class="btn btn-primary" />
+}

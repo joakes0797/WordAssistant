@@ -22,6 +22,17 @@ namespace WordAssistant.Controllers
             var games = repo.GetAllGames();
             return View(games);
         }
+        public IActionResult InsertGame()
+        {
+            var game = repo.AssignWord();
+            return View(game);
+        }
+        public IActionResult InsertGameToDatabase(Game gameToInsert)
+        {
+            repo.InsertGame(gameToInsert);
+            return RedirectToAction("Index");
+        }
+
         public IActionResult UpdateGame(int id)
         {
             Game game = repo.GetGame(id);
@@ -34,7 +45,7 @@ namespace WordAssistant.Controllers
         public IActionResult UpdateGameToDatabase(Game game)
         {
             repo.UpdateGame(game);
-            return RedirectToAction("ViewGame", new { id = game.WordID });
+            return RedirectToAction("ViewGame", new { id = game.GameID });
         }
         public IActionResult ViewGame(int id)
         {
