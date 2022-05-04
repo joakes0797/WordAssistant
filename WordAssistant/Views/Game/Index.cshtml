@@ -1,18 +1,22 @@
 ﻿@model IEnumerable<Game>
 @{
-    ViewData["Title"] = "Game Tracker";
+    ViewData["Title"] = "GameTracker";
 }
 
 <div class="text-center">
-    <h2 class="display-4">Game Tracker</h2>
-    <h3>Keeping track of your Wordle answers.</h3>
+    <h2 class="display-4">GameTracker</h2>
+    <h3>A place to keep track of your Wordle answers.</h3>
 </div>				
 
-<div style="display: block">
-     <a href="/Game/InsertGame/">Log a New Game</a>
+<div class="row" >
+    <div class="mx-auto">
+        <a href="/Game/InsertGame/" class="btn btn-info my-3">Log a New Game</a>
+        @*<button href="/Game/InsertGame/" class="btn btn-info my-3">Log a New Game</button>*@
+             @*<a href="/Game/InsertGame/">Log a New Game</a>*@
+    </div>
  </div>
 
-<table class="table text-white">
+<table class="table table-hover table-dark text-white">
     <tr>
         <th>Word ID</th>
         <th>Win/Loss</th>
@@ -21,8 +25,8 @@
 				
 @foreach (var game in Model)
     {
-        <tr>
-            <td><a href=/Game/ViewGame/@game.GameID>@game.WordID</a></td>
+        <tr onclick="window.location.href='/Game/ViewGame/@game.GameID';">
+            <td>@game.WordID</td>
             <td>@game.WinLoss</td>
             <td>@game.Date.ToShortDateString()</td>
         </tr>
