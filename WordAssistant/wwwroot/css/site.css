@@ -19,9 +19,9 @@ a.navbar-brand {
   word-break: break-all;
 }
 
-/* Provide sufficient contrast against white background */
+/* Provide sufficient contrast against dark background */
 a {
-  color: #0366d6;
+    color: var(--blue);
 }
 
 .btn-primary {
