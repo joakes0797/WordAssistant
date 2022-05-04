@@ -5,7 +5,7 @@
 
 <div class="text-center">
     <h2 class="display-4">GameTracker</h2>
-    <h3>A place to keep track of your Wordle answers.</h3>
+    <h3>A place to keep track of your Wordle games.</h3>
 </div>				
 
 <div class="row" >
@@ -17,19 +17,22 @@
  </div>
 
 <table class="table table-hover table-dark text-white">
-    <tr>
-        <th>Word ID</th>
-        <th>Win/Loss</th>
-        <th>Date of Game</th>
-    </tr>
-				
-@foreach (var game in Model)
-    {
-        <tr onclick="window.location.href='/Game/ViewGame/@game.GameID';">
-            <td>@game.WordID</td>
-            <td>@game.WinLoss</td>
-            <td>@game.Date.ToShortDateString()</td>
+    <thead>
+        <tr>
+            <th>Word ID</th>
+            <th>Win/Loss</th>
+            <th>Date of Game</th>
         </tr>
-    }
-				
+    </thead>
+    
+	<tbody>		
+        @foreach (var game in Model)
+            {
+                <tr style="cursor:pointer;" onclick="window.location.href='/Game/ViewGame/@game.GameID';">
+                    <td>@game.WordID</td>
+                    <td>@game.WinLoss</td>
+                    <td>@game.Date.ToShortDateString()</td>
+                </tr>
+            }
+	</tbody>		
 </table>
