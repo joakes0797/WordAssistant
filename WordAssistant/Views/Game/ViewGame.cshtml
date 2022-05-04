@@ -1,22 +1,25 @@
 ﻿@model Game
+@{
+    ViewData["Title"] = "Game Details";
+}
 				
-<h3>@Model.WordID Information</h3>
+<h3>Game Details for @Model.WordID</h3>
 				
 <table class="table">
     <tr>
         <th>Word ID</th>
-        <th>WinLoss</th>
-        <th>Date</th>
+        <th>Win/Loss</th>
+        <th>Date of Game</th>
     </tr>
     <tr>
         <td>@Model.WordID</td>
         <td>@Model.WinLoss</td>
-        <td>@Model.Date</td>
+        <td>@Model.Date.ToShortDateString()</td>
     </tr>
 </table>
 
 <div style="display: block">
-    <a href="/Game/UpdateGame/@Model.GameID">Update this Game</a>
+    <a href="/Game/UpdateGame/@Model.GameID">Edit this Game</a>
 </div>
 
 <div style="display: block">

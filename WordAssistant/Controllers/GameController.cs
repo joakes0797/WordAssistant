@@ -29,7 +29,11 @@ namespace WordAssistant.Controllers
         }
         public IActionResult InsertGame()
         {
-            var game = repo.AssignWord();
+            //var game = repo.AssignWord();
+            var game = new Game
+            {
+                Date = DateTime.Now
+            };
             return View(game);
         }
         public IActionResult InsertGameToDatabase(Game gameToInsert)
@@ -55,6 +59,10 @@ namespace WordAssistant.Controllers
         public IActionResult ViewGame(int id)
         {
             var game = repo.GetGame(id);
+            
+            var word = repo.GetWord(game.WordID);
+            game.Answer = word.Answer;
+            
             return View(game);
         }
     }

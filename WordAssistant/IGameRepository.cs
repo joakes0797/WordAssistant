@@ -10,7 +10,8 @@ namespace WordAssistant
         public Game GetGame(int id);
         public void UpdateGame(Game game);
         public void InsertGame(Game gameToInsert);
-        public IEnumerable<Words> GetWords();  
+        public IEnumerable<Word> GetWords();
+        public Word GetWord(int id);
         public Game AssignWord(); //needs more work
     }
 }

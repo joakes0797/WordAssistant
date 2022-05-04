@@ -1,23 +1,33 @@
 ﻿@model Game
+@{
+    ViewData["Title"] = "Log New Game";
+}
 				
-<h2>Log a New Game</h2>
+<h2>Enter Details for a New Game</h2>
 				
 @using (Html.BeginForm("InsertGameToDatabase", "Game", "Post"))
 {
     <input asp-for="GameID" type="hidden" value="" />
     
-    <label asp-for="WordID" class="control-label">WordID</label>
+    <label asp-for="WordID" class="control-label mt-3">WordID</label>
 	<input type="number" name="WordID" class="form-control" value="" />
     
-    <label asp-for="WinLoss" class="control-label">WinLoss</label>
-    <input type="number" step="1" name="WinLoss" class="form-control" value="@Model.WinLoss" />
-    // WinLoss needs to be a Select dropdown, either Win (1) or Loss (0), see bookmark
+    <label asp-for="WinLoss" class="control-label mt-3">Was game a win or loss?</label>
+    //<input type="number" step="1" name="WinLoss" class="form-control" value="@Model.WinLoss" />
+    <div>
+    <select class="form-select form-select-lg" name="WinLoss" aria-label=".form-select-lg">
+        <option selected>Win/Loss</option>
+        <option value=true>Win</option>
+        <option value=false>Loss</option>
+    </select>
+    </div>
 
-    <label asp-for="Date" class="control-label">Date</label>
-    <input type="date" step="1" name="Date" class="form-control" value="@Model.Date" />
-    // Date needs a Date Picker, see bookmark
-				
-<div class="form-group">
+
+    <label asp-for="Date" class="control-label mt-3">Completion Date</label>
+    <input type="date" name="Date" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+			
+
+@*<div class="form-group">
         <label for="">Select a Word</label>
         <select class="form-control" name="WordID" value="">
             @foreach (var cat in Model.Word)
@@ -25,7 +35,7 @@
                 <option value="@cat.WordID">@cat.WordID @cat.Word</option>
             }
         </select>
-    </div>
+ </div>*@
     
-    <input type="submit" value="Log Game" class="btn btn-primary" />
+    <input type="submit" value="Log Game" class="btn btn-primary mt-3" />
 }

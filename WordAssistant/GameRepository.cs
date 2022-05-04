@@ -5,7 +5,7 @@ using WordAssistant.Models;
 
 namespace WordAssistant
 {
-    public class GameRepository : IGameRepository
+    public class GameRepository : IGameRepository  //this talks directly to database (database context)
     {
         private readonly IDbConnection _conn;
         public GameRepository(IDbConnection conn)
@@ -17,7 +17,7 @@ namespace WordAssistant
         {
             var wordList = GetWords();
             var game = new Game();
-            game.Word = wordList;
+            game.Obsolete = wordList;
             return game;
         }
         public void DeleteGame(Game game)
@@ -28,10 +28,14 @@ namespace WordAssistant
         {
             return _conn.Query<Game>("SELECT * FROM games;");
         }
-
-        public IEnumerable<Words> GetWords()
+        public Word GetWord(int id)
         {
-            return _conn.Query<Words>("SELECT * FROM words;");
+            return _conn.QuerySingle<Word>("SELECT * FROM words WHERE WordID = @id", new { id = id });
+        }
+
+        public IEnumerable<Word> GetWords()
+        {
+            return _conn.Query<Word>("SELECT * FROM words;");
         }
 
         public Game GetGame(int id)
