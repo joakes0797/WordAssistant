@@ -3,27 +3,44 @@
     ViewData["Title"] = "Edit Game";
 }
 				
-<h2>Edit Game Info for @Model.GameID</h2>
-				
-@using (Html.BeginForm("UpdateGameToDatabase", "Game", "Post"))
-{
-    <input asp-for="GameID" type="hidden" value="@Model.GameID" />//game ID is hidden from user
-    
-    <label asp-for="WordID" class="control-label mt-3">WordID</label>
-	<input type="number" name="WordID" class="form-control" value="@Model.WordID" />
-    
-    <label asp-for="WinLoss" class="control-label mt-3">Was game a win or loss?</label>
+@*<h2>Edit Game Info for @Model.GameID</h2>*@
+<div class="container">			
+    @using (Html.BeginForm("UpdateGameToDatabase", "Game", "Post"))
+    {
+        <div class="row" >
+                <div class="col d-flex justify-content-between">
+                    <h4 class="pt-2">Edit Game</h4>
+                </div>
+                <div class="col d-flex justify-content-end">
+                    <div>
+                        <input type="submit" value="Update" class="btn btn-info" />
+                    </div>
+                    <div class="mx-2">
+                        <a href="/Game/ViewGame/@Model.GameID" class="btn btn-secondary">Cancel</a>
+                    </div>
+                </div>
+            </div>
 
-    <div>
-    <select class="form-select form-select-lg" name="WinLoss" aria-label=".form-select-lg">
-        <option selected>Win/Loss</option>
-        <option value=true>Win</option>
-        <option value=false>Loss</option>
-    </select>
-    </div>
 
-    <label asp-for="Date" class="control-label mt-3">Date</label>
-    <input type="date" name="Date" class="form-control" value="@Model.Date.ToString("yyyy-MM-dd")" />
+        <input asp-for="GameID" type="hidden" value="@Model.GameID" />//game ID is hidden from user
     
-    <input type="submit" value="Update Game" class="btn btn-primary mt-3" />
-}
+        <label asp-for="WordID" class="control-label mt-4">WordID</label>
+	    <input type="number" name="WordID" class="form-control" value="@Model.WordID" />
+    
+        <label asp-for="WinLoss" class="control-label mt-4">Was game a win or loss?</label>
+
+        <div>
+            <select class="form-select form-select-lg" name="WinLoss" aria-label=".form-select-lg">
+                <option selected>Win/Loss</option>
+                <option value=true>Win</option>
+                <option value=false>Loss</option>
+            </select>
+        </div>
+
+        <label asp-for="Date" class="control-label mt-4">Date</label>
+        <input type="date" name="Date" class="form-control" value="@Model.Date.ToString("yyyy-MM-dd")" />
+    
+        @*<input type="submit" value="Update Game" class="btn btn-primary mt-4" />*@
+    }
+
+</div>

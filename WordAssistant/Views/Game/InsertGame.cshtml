@@ -3,39 +3,41 @@
     ViewData["Title"] = "Log New Game";
 }
 				
-<h2>Enter Details for a New Game</h2>
-				
-@using (Html.BeginForm("InsertGameToDatabase", "Game", "Post"))
-{
-    <input asp-for="GameID" type="hidden" value="" />
+<div class="container">
+    @using (Html.BeginForm("InsertGameToDatabase", "Game", "Post"))
+    {
+        <div class="row" >
+            <div class="col d-flex justify-content-between">
+                <h4 class="pt-2">New Game</h4>
+            </div>
+            <div class="col d-flex justify-content-end">
+                <div>
+                    <input type="submit" value="Submit" class="btn btn-info" />
+                </div>
+                <div class="mx-2">
+                    <a href="/Game/Index" class="btn btn-secondary">Cancel</a>
+                </div>
+            </div>
+        </div>
+
+        <input asp-for="GameID" type="hidden" value="" />
     
-    <label asp-for="WordID" class="control-label mt-3">WordID</label>
-	<input type="number" name="WordID" class="form-control" value="" />
+        <label asp-for="WordID" class="control-label mt-4">WordID</label>
+	    <input type="number" name="WordID" class="form-control" value="" />
     
-    <label asp-for="WinLoss" class="control-label mt-3">Was game a win or loss?</label>
-    //<input type="number" step="1" name="WinLoss" class="form-control" value="@Model.WinLoss" />
-    <div>
-    <select class="form-select form-select-lg" name="WinLoss" aria-label=".form-select-lg">
-        <option selected>Win/Loss</option>
-        <option value=true>Win</option>
-        <option value=false>Loss</option>
-    </select>
-    </div>
+        <label asp-for="WinLoss" class="control-label mt-4">Was game a win or loss?</label>
 
-
-    <label asp-for="Date" class="control-label mt-3">Completion Date</label>
-    <input type="date" name="Date" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
-			
-
-@*<div class="form-group">
-        <label for="">Select a Word</label>
-        <select class="form-control" name="WordID" value="">
-            @foreach (var cat in Model.Word)
-            {
-                <option value="@cat.WordID">@cat.WordID @cat.Word</option>
-            }
+        <div>
+        <select class="form-select form-select-lg" name="WinLoss" aria-label=".form-select-lg">
+            <option selected>Win/Loss</option>
+            <option value=true>Win</option>
+            <option value=false>Loss</option>
         </select>
- </div>*@
-    
-    <input type="submit" value="Log Game" class="btn btn-info mt-3" />
-}
+        </div>
+
+
+        <label asp-for="Date" class="control-label mt-4">Completion Date</label>
+        <input type="date" name="Date" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+    }			
+
+</div>
