@@ -30,7 +30,6 @@ namespace WordAssistant.Controllers
         }
         public IActionResult InsertGame()
         {
-            //var game = repo.AssignWord();
             var game = new Game
             {
                 Date = DateTime.Now

@@ -21,8 +21,42 @@
         </div>
     </div>
 </div>
+
+<div class="container pt-3">
+
+    <div class="row px-5">
+        <div class="col d-flex justify-content-end">
+            <h5>Answer:  </h5>
+        </div>
+        <div class="col">
+            <h5>@Model.WordName</h5>
+        </div>
+    </div>
+
+    <div class="row px-5">
+        <div class="col d-flex justify-content-end">
+            <h5>Outcome:  </h5>
+        </div>
+        <div class="col">
+            @{string outcome = (@Model.WinLoss) ? "Win" : "Loss"; }
+            <h5>@outcome</h5>
+        </div>
+    </div>
+
+    <div class="row px-5">
+        <div class="col d-flex justify-content-end">
+            <h5>Game Date:  </h5>
+        </div>
+        <div class="col">
+            <h5>@Model.Date.ToShortDateString()</h5>            
+        </div>
+    </div>
+
+</div>
+
+
 				
-<table class="table table-dark text-white mt-4">
+@*<table class="table table-dark text-white mt-4">
     <thead>
         <tr>
             <th>Answer</th>
@@ -38,4 +72,4 @@
             <td>@Model.Date.ToShortDateString()</td>
         </tr>
     </tbody>
-</table>
+</table>*@
