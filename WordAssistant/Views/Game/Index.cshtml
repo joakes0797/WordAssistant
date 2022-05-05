@@ -26,16 +26,10 @@
 	<tbody>		
         @foreach (var game in Model)
             {
+                string outcome = (@game.WinLoss) ? "Win" : "Loss"; //ternary for if true win, if false loss
+
                 <tr style="cursor:pointer;" onclick="window.location.href='/Game/ViewGame/@game.GameID';">
                     <td>@game.WordID</td>
-                    @{
-                        string outcome = "";
-                        if(@game.WinLoss == true)
-                        {outcome = "Win";}
-                        else
-                        {outcome = "Loss";}
-                    }
-                    @*<td>@game.WinLoss</td>*@
                     <td>@outcome</td>        
                     <td>@game.Date.ToShortDateString()</td>
                 </tr>
