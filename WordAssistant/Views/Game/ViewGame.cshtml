@@ -35,14 +35,22 @@
     <thead>
         <tr>
             <th>Word ID</th>
-            <th>Win/Loss</th>
+            <th>Outcome</th>
             <th>Date of Game</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td>@Model.WordID</td>
-            <td>@Model.WinLoss</td>
+            @{
+                string outcome = "";
+                if(@Model.WinLoss == true)
+                {outcome = "Win";}
+                else
+                {outcome = "Loss";}
+              }
+            <td>@outcome</td>
+            @*<td>@Model.WinLoss</td>*@
             <td>@Model.Date.ToShortDateString()</td>
         </tr>
     </tbody>
