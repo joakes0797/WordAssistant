@@ -13,7 +13,8 @@ namespace WordAssistant.Models
         public int WordID { get; set; }
         public bool WinLoss { get; set; }
         public DateTime Date { get; set; }
-        public IEnumerable<Word> Obsolete { get; set; } //delete me later, the Words table is immutable
-        public string Answer { get; set; }
+
+
+        public string WordName { get; set; } //not mapped by Dapper b/c this isn't a column
     }
 }

@@ -26,7 +26,7 @@
 	<tbody>		
         @foreach (var game in Model)
             {
-                string outcome = (@game.WinLoss) ? "Win" : "Loss"; //ternary for if true win, if false loss
+                string outcome = (@game.WinLoss) ? "Win" : "Loss"; //ternary for if true win, else false loss
 
                 <tr style="cursor:pointer;" onclick="window.location.href='/Game/ViewGame/@game.GameID';">
                     <td>@game.WordID</td>

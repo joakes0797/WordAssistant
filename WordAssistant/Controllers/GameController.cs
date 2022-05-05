@@ -10,15 +10,16 @@ namespace WordAssistant.Controllers
     public class GameController : Controller
     {
         private readonly IGameRepository repo;
-        public IActionResult DeleteGame(Game game)
-        {
-            repo.DeleteGame(game);
-            return RedirectToAction("Index");
-        }
 
         public GameController(IGameRepository repo)
         {
             this.repo = repo;
+        }
+
+        public IActionResult DeleteGame(Game game)     //IActionResult is an API endpoint
+        {
+            repo.DeleteGame(game);
+            return RedirectToAction("Index");
         }
 
         // GET: /<controller>/
@@ -61,7 +62,7 @@ namespace WordAssistant.Controllers
             var game = repo.GetGame(id);
             
             var word = repo.GetWord(game.WordID);
-            game.Answer = word.Answer;
+            game.WordName = word.Name;
             
             return View(game);
         }

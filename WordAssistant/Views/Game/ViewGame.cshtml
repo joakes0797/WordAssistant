@@ -32,7 +32,7 @@
     </thead>
     <tbody>
         <tr>
-            <td>@Model.WordID</td>
+            <td>@Model.WordID ---- @Model.WordName</td>
             @{string outcome = (@Model.WinLoss) ? "Win" : "Loss"; }
             <td>@outcome</td>
             <td>@Model.Date.ToShortDateString()</td>

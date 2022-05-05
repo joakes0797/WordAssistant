@@ -13,13 +13,6 @@ namespace WordAssistant
             _conn = conn;
         }
 
-        public Game AssignWord()
-        {
-            var wordList = GetWords();
-            var game = new Game();
-            game.Obsolete = wordList;
-            return game;
-        }
         public void DeleteGame(Game game)
         {
             _conn.Execute("DELETE FROM games WHERE GameID = @id;", new { id = game.GameID });
@@ -31,11 +24,6 @@ namespace WordAssistant
         public Word GetWord(int id)
         {
             return _conn.QuerySingle<Word>("SELECT * FROM words WHERE WordID = @id", new { id = id });
-        }
-
-        public IEnumerable<Word> GetWords()
-        {
-            return _conn.Query<Word>("SELECT * FROM words;");
         }
 
         public Game GetGame(int id)
