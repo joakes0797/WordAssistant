@@ -19,7 +19,8 @@ namespace WordAssistant
         }
         public IEnumerable<Game> GetAllGames()
         {
-            return _conn.Query<Game>("SELECT * FROM games;");
+            //return _conn.Query<Game>("SELECT * FROM games;");
+            return _conn.Query<Game>("SELECT games.GameID, games.WordID, games.WinLoss, games.Date, words.Name AS WordName FROM games JOIN words ON words.WordID = games.WordID;");
         }
         public Word GetWord(int id)
         {
@@ -28,7 +29,8 @@ namespace WordAssistant
 
         public Game GetGame(int id)
         {
-            return _conn.QuerySingle<Game>("SELECT * FROM games WHERE GameID = @id", new { id = id });
+            //return _conn.QuerySingle<Game>("SELECT * FROM games WHERE GameID = @id", new { id = id });
+            return _conn.QuerySingle<Game>("SELECT games.GameID, games.WordID, games.WinLoss, games.Date, words.Name AS WordName FROM games JOIN words ON words.WordID = games.WordID WHERE GameID = @id", new { id = id });
         }
 
         public void InsertGame(Game gameToInsert)

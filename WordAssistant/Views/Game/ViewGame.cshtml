@@ -25,14 +25,14 @@
 <table class="table table-dark text-white mt-4">
     <thead>
         <tr>
-            <th>Word ID</th>
+            <th>Answer</th>
             <th>Outcome</th>
-            <th>Date of Game</th>
+            <th>Game Date</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>@Model.WordID ---- @Model.WordName</td>
+            <td>@Model.WordName</td>
             @{string outcome = (@Model.WinLoss) ? "Win" : "Loss"; }
             <td>@outcome</td>
             <td>@Model.Date.ToShortDateString()</td>

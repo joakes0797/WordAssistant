@@ -15,6 +15,6 @@ namespace WordAssistant.Models
         public DateTime Date { get; set; }
 
 
-        public string WordName { get; set; } //not mapped by Dapper b/c this isn't a column
+        public string WordName { get; set; } //GetAllGames mapped by Dapper as WordName, GetGame not mapped by Dapper
     }
 }

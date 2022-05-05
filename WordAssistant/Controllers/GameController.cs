@@ -26,6 +26,11 @@ namespace WordAssistant.Controllers
         public IActionResult Index()
         {
             var games = repo.GetAllGames();
+            //foreach (var game in games)
+            //{
+            //    var word = repo.GetWord(game.WordID);
+            //    game.WordName = word.Name;
+            //}
             return View(games);
         }
         public IActionResult InsertGame()
@@ -61,7 +66,7 @@ namespace WordAssistant.Controllers
         {
             var game = repo.GetGame(id);
             
-            var word = repo.GetWord(game.WordID);
+            var word = repo.GetWord(game.WordID); //change SQL in GetGame means won't need these 2 lines
             game.WordName = word.Name;
             
             return View(game);

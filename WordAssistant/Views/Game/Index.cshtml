@@ -17,9 +17,9 @@
 <table class="table table-hover table-dark text-white">
     <thead>
         <tr>
-            <th>Word ID</th>
+            <th>Answer</th>
             <th>Outcome</th>
-            <th>Date of Game</th>
+            <th>Game Date</th>
         </tr>
     </thead>
 
@@ -29,7 +29,7 @@
                 string outcome = (@game.WinLoss) ? "Win" : "Loss"; //ternary for if true win, else false loss
 
                 <tr style="cursor:pointer;" onclick="window.location.href='/Game/ViewGame/@game.GameID';">
-                    <td>@game.WordID</td>
+                    <td>@game.WordName</td>
                     <td>@outcome</td>        
                     <td>@game.Date.ToShortDateString()</td>
                 </tr>
