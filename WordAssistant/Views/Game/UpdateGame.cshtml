@@ -7,7 +7,7 @@
 <div class="container">			
     @using (Html.BeginForm("UpdateGameToDatabase", "Game", "Post"))
     {
-        <div class="row" >
+        <div class="row mb-3" >
                 <div class="col d-flex justify-content-between">
                     <h4 class="pt-2">Edit Game</h4>
                 </div>
@@ -21,8 +21,56 @@
                 </div>
             </div>
 
+        <div class="container">
 
-        <input asp-for="GameID" type="hidden" value="@Model.GameID" />//game ID is hidden from user
+            <div class="row justify-content-md-center">
+
+                <div class="col col-lg-2"></div>
+
+                <div class="col-md-auto">
+
+                    <div class="row">
+                        <div class="col d-flex align-items-end">
+                            <h5>Answer:  </h5>
+                        </div>
+                        <div class="col">
+                            <input asp-for="GameID" type="hidden" value="@Model.GameID" />
+	                        <input type="number" name="WordID" class="form-control" value="@Model.WordID" />
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col d-flex align-items-end">
+                            <h5>Outcome:  </h5>
+                        </div>
+                        <div class="col">
+                            <select class="form-control" name="WinLoss" aria-label=".form-select-lg">
+                                <option selected>Win/Loss</option>
+                                <option value=true>Win</option>
+                                <option value=false>Loss</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col d-flex align-items-end">
+                            <h5>Game Date:  </h5>
+                        </div>
+                        <div class="col">
+                            <input type="date" name="Date" class="form-control" value="@Model.Date.ToString("yyyy-MM-dd")" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col col-lg-2"></div>
+
+              </div>
+                
+            </div>
+
+
+
+        @*<input asp-for="GameID" type="hidden" value="@Model.GameID" />
     
         <label asp-for="WordID" class="control-label mt-4">WordID</label>
 	    <input type="number" name="WordID" class="form-control" value="@Model.WordID" />
@@ -38,9 +86,8 @@
         </div>
 
         <label asp-for="Date" class="control-label mt-4">Date</label>
-        <input type="date" name="Date" class="form-control" value="@Model.Date.ToString("yyyy-MM-dd")" />
+        <input type="date" name="Date" class="form-control" value="@Model.Date.ToString("yyyy-MM-dd")" />*@
     
         @*<input type="submit" value="Update Game" class="btn btn-primary mt-4" />*@
     }
-
 </div>
