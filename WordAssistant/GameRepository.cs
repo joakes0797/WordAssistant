@@ -13,6 +13,12 @@ namespace WordAssistant
             _conn = conn;
         }
 
+        //public Word CheckAnswer(string userInput)
+        //{
+        //    object Name = null;
+        //    return _conn.QuerySingle<Word>("SELECT * FROM words WHERE Name = @userInput", new { Name });
+        //}
+
         public void DeleteGame(Game game)
         {
             _conn.Execute("DELETE FROM games WHERE GameID = @id;", new { id = game.GameID });
@@ -38,7 +44,6 @@ namespace WordAssistant
             _conn.Execute("INSERT INTO games (WordID, WinLoss, Date) VALUES (@WordID, @WinLoss, @Date);",
             new { WordID = gameToInsert.WordID, WinLoss = gameToInsert.WinLoss, Date = gameToInsert.Date });
         }
-
 
         public void UpdateGame(Game game)
         {

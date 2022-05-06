@@ -56,6 +56,25 @@ namespace WordAssistant.Controllers
             repo.UpdateGame(game);
             return RedirectToAction("ViewGame", new { id = game.GameID });
         }
+
+        public IActionResult Bob(string WordName)
+        {
+            //string result;
+            //if (WordName == cigar)
+            //{
+            //    result = "Valid WordName";
+            //}
+            //else
+            //{
+            //    result = "Invalid WordName";
+            //}
+            //return Json(result);
+            var existingWords = new[] { "cigar", "awake", "humph" };
+            var valid = existingWords.Contains(WordName);
+            return new JsonResult(valid);
+            //return Ok();
+        }
+
         public IActionResult ViewGame(int id)
         {
             var game = repo.GetGame(id);

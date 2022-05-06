@@ -2,11 +2,17 @@
 @{
     ViewData["Title"] = "Log New Game";
 }
-				
+
+@section scripts{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/lib/jquery-ajax-unobtrusive/dist/jquery.unobtrusive-ajax.min.js"></script>
+}
+
 <div class="container">
     @using (Html.BeginForm("InsertGameToDatabase", "Game", "Post"))
     {
-        <div class="row mb-3" >
+        <div class="row mb-3">
             <div class="col d-flex justify-content-between">
                 <h4 class="pt-2">New Game</h4>
             </div>
@@ -30,12 +36,18 @@
                 <div class="col-md-auto">
 
                     <div class="row">
-                        <div class="col d-flex align-items-end">
+                        <div class="col d-flex align-items-start">
                             <h5>Answer:  </h5>
                         </div>
                         <div class="col">
-                            <input asp-for="GameID" type="hidden" value="" />
-	                        <input type="number" name="WordID" class="form-control" value="" />
+                            <input asp-for="WordName" class="form-control" placeholder="Answer" maxlength="5">                
+                            <span asp-validation-for="WordName"></span>
+
+
+
+
+                            @*<input asp-for="GameID" type="hidden" value="" />
+                            <input type="number" name="WordID" class="form-control" value="" />*@
                         </div>
                     </div>
 
@@ -63,65 +75,7 @@
                 </div>
 
                 <div class="col col-lg-2"></div>
-
-              </div>
-                
             </div>
-            
-
-            @*<div class="row">
-                <div class="col d-flex justify-content-end">
-                    <h5>Answer:  </h5>
-                </div>
-                <div class="col">
-                    <input asp-for="GameID" type="hidden" value="" />
-	                <input type="number" name="WordID" class="form-control" value="" />
-                </div>
-            </div>
-
-            <div class="row mt-3">
-                <div class="col d-flex justify-content-end">
-                    <h5>Outcome:  </h5>
-                </div>
-                <div class="col">
-                        
-                    <select class="form-control" name="WinLoss" aria-label=".form-select-lg">
-                        <option selected>Win/Loss</option>
-                        <option value=true>Win</option>
-                        <option value=false>Loss</option>
-                    </select>
-                        
-                </div>
-            </div>
-
-            <div class="row mt-3">
-                <div class="col d-flex justify-content-end">
-                    <h5>Game Date:  </h5>
-                </div>
-                <div class="col">
-                    <input type="date" name="Date" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
-                </div>
-            </div>
-        </div>*@
-
-
-        @*<input asp-for="GameID" type="hidden" value="" />
-    
-        <label asp-for="WordID" class="control-label mt-4">WordID</label>
-	    <input type="number" name="WordID" class="form-control" value="" />
-    
-        <label asp-for="WinLoss" class="control-label mt-4">Was game a win or loss?</label>
-
-        <div>
-        <select class="form-select form-select-lg" name="WinLoss" aria-label=".form-select-lg">
-            <option selected>Win/Loss</option>
-            <option value=true>Win</option>
-            <option value=false>Loss</option>
-        </select>
         </div>
-
-
-        <label asp-for="Date" class="control-label mt-4">Completion Date</label>
-        <input type="date" name="Date" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd")" />*@
-    }			
+    }
 </div>
