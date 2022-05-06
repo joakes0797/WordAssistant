@@ -12,7 +12,7 @@ namespace WordAssistant.Models
         {
         }
 
-        public int GameID { get; set; }
+        public int GameID { get; set; } //don't need for "Log a New Game" b/c auto-increment
         public int WordID { get; set; }
         public bool WinLoss { get; set; }
         public DateTime Date { get; set; }
@@ -24,15 +24,8 @@ namespace WordAssistant.Models
         //    MinLength(5, ErrorMessage ="Answer must contain 5 letters."),
         //    Remote("Bob", "GameController", ErrorMessage = "That word is not a valid answer.")
         //]
-        [Required(ErrorMessage = "Code Required")]
-        [Remote("Bob", "Game", ErrorMessage = "Please enter a valid code")]
+        [Required(ErrorMessage = "A 5-letter answer is required.")]
+        [Remote("ValidateAnswer", "Game", ErrorMessage = "That word is not in the Word List.")]
         public string WordName { get; set; } //GetAllGames mapped by Dapper as WordName, GetGame not mapped by Dapper
-
-        //public JsonResult OnPostCheckAnswer()
-        //{
-        //    var existingWords = new[] { "cigar", "sissy", "farts" };
-        //    var valid = existingWords.Contains(WordName);
-        //    return new JsonResult(valid);
-        //}
     }
 }

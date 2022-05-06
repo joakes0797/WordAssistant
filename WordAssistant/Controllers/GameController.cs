@@ -38,6 +38,8 @@ namespace WordAssistant.Controllers
         }
         public IActionResult InsertGameToDatabase(Game gameToInsert)
         {
+            var fetchID = repo.GetWordID(gameToInsert.WordName);
+            gameToInsert.WordID = fetchID;//now have 4 properties of the Game object
             repo.InsertGame(gameToInsert);
             return RedirectToAction("Index");
         }
@@ -57,22 +59,23 @@ namespace WordAssistant.Controllers
             return RedirectToAction("ViewGame", new { id = game.GameID });
         }
 
-        public IActionResult Bob(string WordName)
+        public IActionResult ValidateAnswer(string WordName)
         {
-            //string result;
-            //if (WordName == cigar)
-            //{
-            //    result = "Valid WordName";
-            //}
-            //else
-            //{
-            //    result = "Invalid WordName";
-            //}
-            //return Json(result);
-            var existingWords = new[] { "cigar", "awake", "humph" };
-            var valid = existingWords.Contains(WordName);
+            var attempt = repo.CheckAnswer(WordName.ToLower());
+            var valid = false;
+            if (attempt == null)
+            {
+                valid = false;
+            }
+            else
+            {
+                valid = true;
+            }
             return new JsonResult(valid);
-            //return Ok();
+
+            //var existingWords = new[] { "cigar", "awake", "humph" };
+            //var valid = existingWords.Contains(WordName);
+            //return new JsonResult(valid);
         }
 
         public IActionResult ViewGame(int id)

@@ -13,11 +13,12 @@ namespace WordAssistant
             _conn = conn;
         }
 
-        //public Word CheckAnswer(string userInput)
-        //{
-        //    object Name = null;
-        //    return _conn.QuerySingle<Word>("SELECT * FROM words WHERE Name = @userInput", new { Name });
-        //}
+        public Word CheckAnswer(string WordName)
+        {
+            return _conn.QuerySingleOrDefault<Word>("SELECT * FROM words WHERE Name = @WordName",
+                new { WordName = WordName });
+            //QuerySingleorDefault can return 1 or 0 (null)
+        }
 
         public void DeleteGame(Game game)
         {
@@ -31,6 +32,13 @@ namespace WordAssistant
         public Word GetWord(int id)
         {
             return _conn.QuerySingle<Word>("SELECT * FROM words WHERE WordID = @id", new { id = id });
+        }
+        public int GetWordID(string WordName)
+        {
+            var word = _conn.QuerySingleOrDefault<Word>("SELECT * FROM words WHERE Name = @WordName",
+                new { WordName = WordName });
+            return word.WordID;
+            //return _conn.QuerySingle<Word>("SELECT * FROM words WHERE WordName = @WordName", new { id = id });
         }
 
         public Game GetGame(int id)

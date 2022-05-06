@@ -4,9 +4,7 @@
 }
 
 @section scripts{
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <partial name="_ValidationScriptsPartial" />
-    <script src="~/lib/jquery-ajax-unobtrusive/dist/jquery.unobtrusive-ajax.min.js"></script>
 }
 
 <div class="container">
@@ -42,12 +40,8 @@
                         <div class="col">
                             <input asp-for="WordName" class="form-control" placeholder="Answer" maxlength="5">                
                             <span asp-validation-for="WordName"></span>
-
-
-
-
-                            @*<input asp-for="GameID" type="hidden" value="" />
-                            <input type="number" name="WordID" class="form-control" value="" />*@
+                            @*<input asp-for="GameID" type="hidden" value="" />*@
+                            @*<input type="number" name="WordID" class="form-control" value="" />*@
                         </div>
                     </div>
 
