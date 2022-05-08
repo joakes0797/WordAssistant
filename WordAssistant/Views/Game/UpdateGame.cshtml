@@ -2,6 +2,10 @@
 @{
     ViewData["Title"] = "Edit Game";
 }
+
+@section scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
 				
 @*<h2>Edit Game Info for @Model.GameID</h2>*@
 <div class="container">			
@@ -30,12 +34,14 @@
                 <div class="col-md-auto">
 
                     <div class="row">
-                        <div class="col d-flex align-items-end">
+                        <div class="col d-flex align-items-start">
                             <h5>Answer:  </h5>
                         </div>
                         <div class="col">
+                            <input asp-for="WordName" class="form-control" placeholder="Answer" maxlength="5">                
+                            <span asp-validation-for="WordName"></span>
                             <input asp-for="GameID" type="hidden" value="@Model.GameID" />
-	                        <input type="number" name="WordID" class="form-control" value="@Model.WordID" />
+	                        @*<input type="number" name="WordID" class="form-control" value="@Model.WordID" />*@
                         </div>
                     </div>
 
@@ -45,9 +51,18 @@
                         </div>
                         <div class="col">
                             <select class="form-control" name="WinLoss" aria-label=".form-select-lg">
-                                <option selected>Win/Loss</option>
-                                <option value=true>Win</option>
+                                @if(Model.WinLoss)
+                                {
+                                <option value=true selected>Win</option>
                                 <option value=false>Loss</option>
+                                }else
+                                {
+                                <option value=true>Win</option>
+                                <option value=false selected>Loss</option>
+                                }
+                                @*<option>Win/Loss</option>
+                                <option value=true>Win</option>
+                                <option value=false>Loss</option>*@
                             </select>
                         </div>
                     </div>
@@ -65,27 +80,5 @@
             </div>
                 
         </div>
-
-
-
-        @*<input asp-for="GameID" type="hidden" value="@Model.GameID" />
-    
-        <label asp-for="WordID" class="control-label mt-4">WordID</label>
-	    <input type="number" name="WordID" class="form-control" value="@Model.WordID" />
-    
-        <label asp-for="WinLoss" class="control-label mt-4">Was game a win or loss?</label>
-
-        <div>
-            <select class="form-select form-select-lg" name="WinLoss" aria-label=".form-select-lg">
-                <option selected>Win/Loss</option>
-                <option value=true>Win</option>
-                <option value=false>Loss</option>
-            </select>
-        </div>
-
-        <label asp-for="Date" class="control-label mt-4">Date</label>
-        <input type="date" name="Date" class="form-control" value="@Model.Date.ToString("yyyy-MM-dd")" />*@
-    
-        @*<input type="submit" value="Update Game" class="btn btn-primary mt-4" />*@
     }
 </div>

@@ -49,12 +49,14 @@ namespace WordAssistant.Controllers
             Game game = repo.GetGame(id);
             if (game == null)
             {
-                return View("GameNotFound");
+                return View("Error");
             }
             return View(game);
         }
         public IActionResult UpdateGameToDatabase(Game game)
         {
+            var fetchID = repo.GetWordID(game.WordName);
+            game.WordID = fetchID;
             repo.UpdateGame(game);
             return RedirectToAction("ViewGame", new { id = game.GameID });
         }
@@ -62,20 +64,18 @@ namespace WordAssistant.Controllers
         public IActionResult ValidateAnswer(string WordName)
         {
             var attempt = repo.CheckAnswer(WordName.ToLower());
-            var valid = false;
-            if (attempt == null)
-            {
-                valid = false;
-            }
-            else
-            {
-                valid = true;
-            }
-            return new JsonResult(valid);
+            var valid = (attempt != null);
+            // valid is the result of attempt - true if attempt is not null, false if it is
 
-            //var existingWords = new[] { "cigar", "awake", "humph" };
-            //var valid = existingWords.Contains(WordName);
-            //return new JsonResult(valid);
+            //if (attempt == null)
+            //{
+            //    valid = false;
+            //}
+            //else
+            //{
+            //    valid = true;
+            //}
+            return new JsonResult(valid);
         }
 
         public IActionResult ViewGame(int id)

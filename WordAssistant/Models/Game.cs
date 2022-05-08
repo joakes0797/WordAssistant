@@ -17,15 +17,9 @@ namespace WordAssistant.Models
         public bool WinLoss { get; set; }
         public DateTime Date { get; set; }
 
-
-        //[BindProperty, 
-        //    Required(ErrorMessage ="A 5-letter answer is required."),
-        //    MaxLength(5, ErrorMessage="Answer cannot exceed 5 letters."),
-        //    MinLength(5, ErrorMessage ="Answer must contain 5 letters."),
-        //    Remote("Bob", "GameController", ErrorMessage = "That word is not a valid answer.")
-        //]
+                
         [Required(ErrorMessage = "A 5-letter answer is required.")]
         [Remote("ValidateAnswer", "Game", ErrorMessage = "That word is not in the Word List.")]
-        public string WordName { get; set; } //GetAllGames mapped by Dapper as WordName, GetGame not mapped by Dapper
+        public string WordName { get; set; }
     }
 }
