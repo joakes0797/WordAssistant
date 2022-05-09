@@ -32,6 +32,8 @@ namespace WordAssistant
                 return conn;
             });
             services.AddTransient<IGameRepository, GameRepository>();
+           
+            services.AddTransient<IGuessRepository, GuessRepository>();
 
             services.AddControllersWithViews();
         }

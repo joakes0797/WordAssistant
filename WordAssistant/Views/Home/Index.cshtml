@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<Word>
+@{
     ViewData["Title"] = "Help for Wordle";
 }
 
@@ -8,7 +9,7 @@
 </div>
 
 <div class="container"> @*this is the form container*@
-    @using (Html.BeginForm("GuessCheck", "Home", "Post"))
+    @using (Html.BeginForm("GuessCheck", "Guess", "Post"))
     {
     <div class="container">  @*this is the green letter container*@
         <div class="row justify-content-md-center">
@@ -22,17 +23,17 @@
                          <h5>Box 1:  </h5>
                     </div>
                     <div class="col">
-                        <input type="text" name="Letter" class="form-control" value="" maxlength="1" />
+                        <input type="text" name="B1" class="form-control" value="" maxlength="1" />
                         @*<input asp-for="letter" class="form-control" placeholder="" maxlength="1">
                         <span asp-validation-for="letter"></span>*@
                     </div>
                 </div>
-                @*<div class="row mt-2">
+                <div class="row mt-2">
                     <div class="col d-flex align-items-start">
                         <h5>Box 2:  </h5>
                     </div>
                     <div class="col">
-                        <input type="text" name="B1" class="form-control" value="" maxlength="1" />
+                        <input type="text" name="B2" class="form-control" value="" maxlength="1" />
                     </div>
                 </div>
                 <div class="row mt-2">
@@ -40,7 +41,7 @@
                         <h5>Box 3:  </h5>
                     </div>
                     <div class="col">
-                        <input type="text" name="B1" class="form-control" value="" maxlength="1" />
+                        <input type="text" name="B3" class="form-control" value="" maxlength="1" />
                     </div>
                 </div>
                 <div class="row mt-2">
@@ -48,7 +49,7 @@
                         <h5>Box 4:  </h5>
                     </div>
                     <div class="col">
-                        <input type="text" name="B1" class="form-control" value="" maxlength="1" />
+                        <input type="text" name="B4" class="form-control" value="" maxlength="1" />
                     </div>
                 </div>
                 <div class="row mt-2">
@@ -56,9 +57,9 @@
                         <h5>Box 5:  </h5>
                     </div>
                     <div class="col">
-                        <input type="text" name="B1" class="form-control" value="" maxlength="1" />
+                        <input type="text" name="B5" class="form-control" value="" maxlength="1" />
                     </div>
-                </div>*@
+                </div>
             </div>
             <div class="col col-lg-2"></div>
         </div>
@@ -71,4 +72,30 @@
     </div>
  </div>
  }
+
+ <table class="table table-hover table-dark text-white">
+    <thead>
+        <tr>
+            <th>Potential answers</th>
+        </tr>
+    </thead>
+
+	<tbody>		
+        @foreach (var word in Model)
+            {
+
+                <tr>
+                    <td>@word.Name</td>
+                </tr>
+            }
+	</tbody>		
+</table>
+
+
+
+
+
+
+
+
 </div>
