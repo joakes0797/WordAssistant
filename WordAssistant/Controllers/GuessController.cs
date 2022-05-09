@@ -25,58 +25,98 @@ namespace WordAssistant.Controllers
         public IActionResult GuessCheck(Guess answer)
         {
             var greenCheck = "";
-            if (answer.B1 is null)
+            if (answer.B01 is null)
             {
                 greenCheck += "_";
             }
             else
             {
-                greenCheck += answer.B1.ToString();
+                greenCheck += answer.B01.ToString();
             }
 
-            if (answer.B2 is null)
+            if (answer.B02 is null)
             {
                 greenCheck += "_";
             }
             else
             {
-                greenCheck += answer.B2.ToString();
+                greenCheck += answer.B02.ToString();
             }
 
-            if (answer.B3 is null)
+            if (answer.B03 is null)
             {
                 greenCheck += "_";
             }
             else
             {
-                greenCheck += answer.B3.ToString();
+                greenCheck += answer.B03.ToString();
             }
 
-            if (answer.B4 is null)
+            if (answer.B04 is null)
             {
                 greenCheck += "_";
             }
             else
             {
-                greenCheck += answer.B4.ToString();
+                greenCheck += answer.B04.ToString();
             }
 
-            if (answer.B5 is null)
+            if (answer.B05 is null)
             {
                 greenCheck += "_";
             }
             else
             {
-                greenCheck += answer.B5.ToString();
+                greenCheck += answer.B05.ToString();
             }
             var greenAttempt = repo.GetGreenResults(greenCheck);
-            return View("../Home/Index", greenAttempt);
-            //return Ok();
 
-            //var fetchID = repo.GetWordID(gameToInsert.WordName);
-            //gameToInsert.WordID = fetchID;//now have 4 properties of the Game object
-            //repo.InsertGame(gameToInsert);
-            //return RedirectToAction("Index");
+            var yellowAttempt = new List<Word>();
+            var yellowLetters = "";
+
+            if (answer.B06 != null)
+            {
+                yellowLetters += answer.B06;
+            }
+            if (answer.B07 != null)
+            {
+                yellowLetters += answer.B07;
+            }
+            if (answer.B08 != null)
+            {
+                yellowLetters += answer.B08;
+            }
+            if (answer.B09 != null)
+            {
+                yellowLetters += answer.B09;
+            }
+            if (answer.B10 != null)
+            {
+                yellowLetters += answer.B10;
+            }
+
+            if (yellowLetters == "")
+            {
+                return View("../Home/Index", greenAttempt);
+            }
+            else
+            {
+                foreach (var x in yellowLetters)
+                {
+                    var filter = from word in greenAttempt
+                               where word.Name.Contains(x)
+                               select word;
+                    yellowAttempt.AddRange(filter.ToList());
+                }
+            }
+            IEnumerable<Word> duplicates = yellowAttempt.GroupBy(x => x)
+                                        .Where(g => g.Count() > 1)
+                                        .Select(x => x.Key);
+
+
+
+            return View("../Home/Index", duplicates);
+            //return Ok();
         }
     }
 }
