@@ -2,7 +2,73 @@
     ViewData["Title"] = "Help for Wordle";
 }
 
-<div class="container text-center">
-    <h3 class="display-4">WordAssistant</h3>
+<div class="container text-center mb-3">
+    <h3 class="display-4">WordleAssistant</h3>
     <h4>Helping you narrow down today's Wordle answer.</h4>
+</div>
+
+<div class="container"> @*this is the form container*@
+    @using (Html.BeginForm("GuessCheck", "Home", "Post"))
+    {
+    <div class="container">  @*this is the green letter container*@
+        <div class="row justify-content-md-center">
+            <div class="col col-lg-2"></div>
+            <div class="col-md-auto bg-success">
+                <div class="row">
+                    <h5>Enter green letters in their exact spot.  Leave these fields empty if you don't have green letters.</h5>
+                </div>
+                <div class="row">
+                    <div class="col d-flex align-items-start">
+                         <h5>Box 1:  </h5>
+                    </div>
+                    <div class="col">
+                        <input type="text" name="Letter" class="form-control" value="" maxlength="1" />
+                        @*<input asp-for="letter" class="form-control" placeholder="" maxlength="1">
+                        <span asp-validation-for="letter"></span>*@
+                    </div>
+                </div>
+                @*<div class="row mt-2">
+                    <div class="col d-flex align-items-start">
+                        <h5>Box 2:  </h5>
+                    </div>
+                    <div class="col">
+                        <input type="text" name="B1" class="form-control" value="" maxlength="1" />
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col d-flex align-items-start">
+                        <h5>Box 3:  </h5>
+                    </div>
+                    <div class="col">
+                        <input type="text" name="B1" class="form-control" value="" maxlength="1" />
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col d-flex align-items-start">
+                        <h5>Box 4:  </h5>
+                    </div>
+                    <div class="col">
+                        <input type="text" name="B1" class="form-control" value="" maxlength="1" />
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col d-flex align-items-start">
+                        <h5>Box 5:  </h5>
+                    </div>
+                    <div class="col">
+                        <input type="text" name="B1" class="form-control" value="" maxlength="1" />
+                    </div>
+                </div>*@
+            </div>
+            <div class="col col-lg-2"></div>
+        </div>
+    </div>
+
+
+    <div class="row" >  @*this is the submit button*@
+    <div class="mx-auto">
+        <input type="submit" value="Submit" class="btn btn-info" />
+    </div>
+ </div>
+ }
 </div>

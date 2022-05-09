@@ -18,6 +18,20 @@ namespace WordAssistant.Controllers
             _logger = logger;
         }
 
+        public IActionResult GuessCheck(Guess answer)
+        {
+            //var greenCheck = "";
+            //if (B1 is null)
+            //{
+            //    greenCheck += "_";
+            //}
+            return Ok();
+            //var fetchID = repo.GetWordID(gameToInsert.WordName);
+            //gameToInsert.WordID = fetchID;//now have 4 properties of the Game object
+            //repo.InsertGame(gameToInsert);
+            //return RedirectToAction("Index");
+        }
+
         public IActionResult Index()
         {
             return View();
