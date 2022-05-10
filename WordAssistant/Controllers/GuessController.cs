@@ -24,56 +24,57 @@ namespace WordAssistant.Controllers
 
         public IActionResult GuessCheck(Guess answer)
         {
-            var greenCheck = "";
+            //------------------------------------------------------green letters
+            var greenLetters = "";
             if (answer.B01 is null)
             {
-                greenCheck += "_";
+                greenLetters += "_";
             }
             else
             {
-                greenCheck += answer.B01.ToString();
+                greenLetters += answer.B01.ToString();
             }
 
             if (answer.B02 is null)
             {
-                greenCheck += "_";
+                greenLetters += "_";
             }
             else
             {
-                greenCheck += answer.B02.ToString();
+                greenLetters += answer.B02.ToString();
             }
 
             if (answer.B03 is null)
             {
-                greenCheck += "_";
+                greenLetters += "_";
             }
             else
             {
-                greenCheck += answer.B03.ToString();
+                greenLetters += answer.B03.ToString();
             }
 
             if (answer.B04 is null)
             {
-                greenCheck += "_";
+                greenLetters += "_";
             }
             else
             {
-                greenCheck += answer.B04.ToString();
+                greenLetters += answer.B04.ToString();
             }
 
             if (answer.B05 is null)
             {
-                greenCheck += "_";
+                greenLetters += "_";
             }
             else
             {
-                greenCheck += answer.B05.ToString();
+                greenLetters += answer.B05.ToString();
             }
-            var greenAttempt = repo.GetGreenResults(greenCheck);
 
-            var yellowAttempt = new List<Word>();
+            //var greenAttempt = repo.GetGreenResults(greenLetters);
+
+            //------------------------------------------------------yellow letters
             var yellowLetters = "";
-
             if (answer.B06 != null)
             {
                 yellowLetters += answer.B06;
@@ -95,23 +96,24 @@ namespace WordAssistant.Controllers
                 yellowLetters += answer.B10;
             }
 
-            if (yellowLetters != "")
-            {
-                foreach (var x in yellowLetters)
-                {
-                    var filter = from word in greenAttempt
-                               where word.Name.Contains(x)
-                               select word;
-                    yellowAttempt.AddRange(filter.ToList());
-                }
-            }
-            IEnumerable<Word> yellowDuplicates = yellowAttempt.GroupBy(x => x)
-                                        .Where(g => g.Count() > 1)
-                                        .Select(x => x.Key);
+            //var yellowAttempt = new List<Word>();
 
-            var grayAttempt = new List<Word>();
+            //if (yellowLetters != "")
+            //{
+            //    foreach (var x in yellowLetters)
+            //    {
+            //        var filter = from word in greenAttempt
+            //                   where word.Name.Contains(x)
+            //                   select word;
+            //        yellowAttempt.AddRange(filter.ToList());
+            //    }
+            //}
+            //IEnumerable<Word> yellowDuplicates = yellowAttempt.GroupBy(x => x)
+            //                            .Where(g => g.Count() > 1)
+            //                            .Select(x => x.Key);
+
+            //------------------------------------------------------gray letters
             var grayLetters = "";
-
             if (answer.B11 != null)
             {
                 grayLetters += answer.B11;
@@ -133,43 +135,168 @@ namespace WordAssistant.Controllers
                 grayLetters += answer.B15;
             }
 
-            if (grayLetters == "" && yellowLetters == "")
+            //var grayAttempt = new List<Word>();
+
+            //if (grayLetters != "")
+            //{
+            //    foreach (var x in grayLetters)
+            //    {
+            //        var withGrays = from word in yellowAttempt
+            //                        where word.Name.Contains(x)
+            //                        select word;
+            //        grayAttempt.AddRange(withGrays.ToList());
+            //    }
+            //}
+            //var totalSort = yellowDuplicates.Except(grayAttempt);  //yellowDuplicates minus grayAttempts
+
+
+
+            //------------------------------------------------------View Logic
+            var totalSort = new IEnumerable<Word>();
+            //submit empty form:  return greenAttempt                               --done
+            //any greens but no yellow or gray:  return greenAttempt                --done
+
+            if (greenLetters == "" && yellowLetters == "" && grayLetters == "")
             {
-                return View("../Home/Index", greenAttempt);
+                var greenAttempt = repo.GetGreenResults(greenLetters);
+                totalSort = greenAttempt;
             }
-            else if (grayLetters == "")
+            if (greenLetters != "" && yellowLetters == "" && grayLetters == "")
             {
-                return View("../Home/Index", yellowDuplicates);
+                var greenAttempt = repo.GetGreenResults(greenLetters);
+                totalSort = greenAttempt;
             }
-            else
+
+            //any yellow but no green or gray:  greenAttempt, then yellowDuplicates     --done
+            //greens and yellows but no gray:  greenAttempt, then yellowDuplicates      --done
+
+            if (yellowLetters != "" && greenLetters == "" && grayLetters == "")
             {
+                var greenAttempt = repo.GetGreenResults(greenLetters);
+
+                var yellowAttempt = new List<Word>();
+                foreach (var x in yellowLetters)
+                {
+                    var filter = from word in greenAttempt
+                                 where word.Name.Contains(x)
+                                 select word;
+                    yellowAttempt.AddRange(filter.ToList());
+                }
+                IEnumerable<Word> yellowDuplicates = yellowAttempt.GroupBy(x => x)
+                                        .Where(g => g.Count() > 1)
+                                        .Select(x => x.Key);
+
+                totalSort = yellowDuplicates;
+            }
+            if (greenLetters != "" && yellowLetters != "" && grayLetters == "")
+            {
+                var greenAttempt = repo.GetGreenResults(greenLetters);
+
+                var yellowAttempt = new List<Word>();
+                foreach (var x in yellowLetters)
+                {
+                    var filter = from word in greenAttempt
+                                 where word.Name.Contains(x)
+                                 select word;
+                    yellowAttempt.AddRange(filter.ToList());
+                }
+                IEnumerable<Word> yellowDuplicates = yellowAttempt.GroupBy(x => x)
+                                        .Where(g => g.Count() > 1)
+                                        .Select(x => x.Key);
+
+                totalSort = yellowDuplicates;
+            }
+
+            //any gray but no green or yellow:  greenAttempt, then grayAttempt      --done
+            //greens and grays but no yellow:  greenAttempt, then grayAttempt       --done
+
+            if (grayLetters != "" && greenLetters == "" && yellowLetters == "")
+            {
+                var greenAttempt = repo.GetGreenResults(greenLetters);
+                
+                var grayAttempt = new List<Word>();
+                foreach (var x in grayLetters)
+                {
+                    var withGrays = from word in greenAttempt
+                                    where word.Name.Contains(x)
+                                    select word;
+                    grayAttempt.AddRange(withGrays.ToList());
+                }
+                totalSort = greenAttempt.Except(grayAttempt);  //greens minus yellows
+            }
+            if (greenLetters != "" && grayLetters != "" && yellowLetters == "")
+            {
+                var greenAttempt = repo.GetGreenResults(greenLetters);
+
+                var grayAttempt = new List<Word>();
+                foreach (var x in grayLetters)
+                {
+                    var withGrays = from word in greenAttempt
+                                    where word.Name.Contains(x)
+                                    select word;
+                    grayAttempt.AddRange(withGrays.ToList());
+                }
+                totalSort = greenAttempt.Except(grayAttempt);  //greens minus yellows
+            }
+
+            //yellows and grays but no green:  greenAttempt, then totalSort         --done
+            //greens, yellows, and grays:  greenAttempt, then totalSort             --done
+            if (yellowLetters != "" && grayLetters != "" && greenLetters == "")
+            {
+                var greenAttempt = repo.GetGreenResults(greenLetters);
+
+                var yellowAttempt = new List<Word>();
+                foreach (var x in yellowLetters)
+                {
+                    var filter = from word in greenAttempt
+                                 where word.Name.Contains(x)
+                                 select word;
+                    yellowAttempt.AddRange(filter.ToList());
+                }
+                IEnumerable<Word> yellowDuplicates = yellowAttempt.GroupBy(x => x)
+                                        .Where(g => g.Count() > 1)
+                                        .Select(x => x.Key);
+
+                var grayAttempt = new List<Word>();
                 foreach (var x in grayLetters)
                 {
                     var withGrays = from word in yellowAttempt
-                                 where word.Name.Contains(x)
-                                 select word;
+                                    where word.Name.Contains(x)
+                                    select word;
                     grayAttempt.AddRange(withGrays.ToList());
                 }
+                totalSort = yellowDuplicates.Except(grayAttempt);  //yellowDuplicates minus grayAttempts
             }
-            var totalSort = yellowDuplicates.Except(grayAttempt);  //yellowDuplicates minus grayAttempts
+            if (greenLetters != "" && yellowLetters != "" && grayLetters != "")
+            {
+                var greenAttempt = repo.GetGreenResults(greenLetters);
+                
+                var yellowAttempt = new List<Word>();
+                foreach (var x in yellowLetters)
+                {
+                    var filter = from word in greenAttempt
+                                 where word.Name.Contains(x)
+                                 select word;
+                    yellowAttempt.AddRange(filter.ToList());
+                }
+                IEnumerable<Word> yellowDuplicates = yellowAttempt.GroupBy(x => x)
+                                        .Where(g => g.Count() > 1)
+                                        .Select(x => x.Key);
+
+                var grayAttempt = new List<Word>();
+                foreach (var x in grayLetters)
+                {
+                    var withGrays = from word in yellowAttempt
+                                    where word.Name.Contains(x)
+                                    select word;
+                    grayAttempt.AddRange(withGrays.ToList());
+                }
+                totalSort = yellowDuplicates.Except(grayAttempt);  //yellowDuplicates minus grayAttempts
+            }
 
 
             return View("../Home/Index", totalSort);
             //return Ok();
-
-
-            //submit empty form:  return greenAttempt
-            //any greens but no yellow or gray:  return greenAttempt
-
-            //any yellow but no green or gray:  greenAttempt, then yellowDuplicates
-            //greens and yellows but no gray:  greenAttempt, then yellowDuplicates
-
-            //any gray but no green or yellow:  greenAttempt, then greyAttempt
-            //greens and grays but no yellow:  greenAttempt, then greyAttempt
-
-            //yellows and grays but no green:  greenAttempt, then totalSort
-            //greens, yellows, and grays:  greenAttempt, then totalSort
-
         }
     }
 }
