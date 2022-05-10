@@ -23,8 +23,6 @@
         public string B14 { get; set; }
         public string B15 { get; set; }
 
-
-
         public Guess()
         {
 
