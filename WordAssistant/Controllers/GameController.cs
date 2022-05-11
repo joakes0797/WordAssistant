@@ -77,7 +77,7 @@ namespace WordAssistant.Controllers
             //}
             return new JsonResult(valid);
         }
-
+        
         public IActionResult ViewGame(int id)
         {
             var game = repo.GetGame(id);

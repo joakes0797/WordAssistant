@@ -195,13 +195,18 @@ namespace WordAssistant.Controllers
             var y3 = $"%{answer.B08}%";
             var y4 = $"%{answer.B09}%";
             var y5 = $"%{answer.B10}%";
-            string g1 = answer.B11 is null ? "" : $"%{answer.B11}%";
-            string g2 = answer.B12 is null ? "" : $"%{answer.B12}%";
-            string g3 = answer.B13 is null ? "" : $"%{answer.B13}%";
-            string g4 = answer.B14 is null ? "" : $"%{answer.B14}%";
-            string g5 = answer.B15 is null ? "" : $"%{answer.B15}%";
-            
-            var foo = repo.GetResults(greenLetters, y1, y2, y3, y4, y5, g1, g2, g3, g4, g5);
+            string g01 = answer.B11 is null ? "" : $"%{answer.B11}%";
+            string g02 = answer.B12 is null ? "" : $"%{answer.B12}%";
+            string g03 = answer.B13 is null ? "" : $"%{answer.B13}%";
+            string g04 = answer.B14 is null ? "" : $"%{answer.B14}%";
+            string g05 = answer.B15 is null ? "" : $"%{answer.B15}%";
+            string g06 = answer.B15 is null ? "" : $"%{answer.B16}%";
+            string g07 = answer.B15 is null ? "" : $"%{answer.B17}%";
+            string g08 = answer.B15 is null ? "" : $"%{answer.B18}%";
+            string g09 = answer.B15 is null ? "" : $"%{answer.B19}%";
+            string g10 = answer.B15 is null ? "" : $"%{answer.B20}%";
+
+            var foo = repo.GetResults(greenLetters, y1, y2, y3, y4, y5, g01, g02, g03, g04, g05, g06, g07, g08, g09, g10);
 
 
             //------------------------------------------------------View Logic

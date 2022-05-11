@@ -2,6 +2,9 @@
 @{
     ViewData["Title"] = "Help for Wordle";
 }
+@section scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
 
 <div class="container text-center mb-4">
     <h3 class="display-4">WordleAssistant</h3>
@@ -15,50 +18,18 @@
         <div class="row justify-content-md-center">
             <div class="col col-lg-2"></div>
             <div class="col-md-auto bg-success">
-                <div class="row">
-                    <h5>Enter green letters in their exact spot.  Leave these fields empty if you don't have green letters.</h5>
+                <div class="row justify-content-center mt-3">
+                    <h5>Enter green letters in their exact spot.</h5>
                 </div>
-                <div class="row">
-                    <div class="col d-flex align-items-start">
-                         <h5>Box 1:  </h5>
-                    </div>
-                    <div class="col">
-                        <input type="text" name="B01" class="form-control" value="" maxlength="1" />
-                        @*<input asp-for="letter" class="form-control" placeholder="" maxlength="1">
-                        <span asp-validation-for="letter"></span>*@
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col d-flex align-items-start">
-                        <h5>Box 2:  </h5>
-                    </div>
-                    <div class="col">
-                        <input type="text" name="B02" class="form-control" value="" maxlength="1" />
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col d-flex align-items-start">
-                        <h5>Box 3:  </h5>
-                    </div>
-                    <div class="col">
-                        <input type="text" name="B03" class="form-control" value="" maxlength="1" />
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col d-flex align-items-start">
-                        <h5>Box 4:  </h5>
-                    </div>
-                    <div class="col">
-                        <input type="text" name="B04" class="form-control" value="" maxlength="1" />
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col d-flex align-items-start">
-                        <h5>Box 5:  </h5>
-                    </div>
-                    <div class="col">
-                        <input type="text" name="B05" class="form-control" value="" maxlength="1" />
-                    </div>
+                @*<div class="row justify-content-center mx-1">
+                    <h5>Leave these fields empty if you don't have green letters.</h5>
+                </div>*@
+                <div class="row no-gutters mb-3 mx-5 mt-1">
+                    <div class="col p-1 shadow-sm"><input type="text" name="B01" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B02" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B03" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B04" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B05" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
                 </div>
             </div>
             <div class="col col-lg-2"></div>
@@ -70,50 +41,18 @@
         <div class="row justify-content-md-center">
             <div class="col col-lg-2"></div>
             <div class="col-md-auto bg-warning">
-                <div class="row">
-                    <h5>Enter yellow letters in their exact spot.  Leave these fields empty if you don't have yellow letters.</h5>
+                <div class="row justify-content-center mt-3">
+                    <h5>Enter any yellow letters.</h5>
                 </div>
-                <div class="row">
-                    <div class="col d-flex align-items-start">
-                         <h5>Box 1:  </h5>
-                    </div>
-                    <div class="col">
-                        <input type="text" name="B06" class="form-control" value="" maxlength="1" />
-                        @*<input asp-for="letter" class="form-control" placeholder="" maxlength="1">
-                        <span asp-validation-for="letter"></span>*@
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col d-flex align-items-start">
-                        <h5>Box 2:  </h5>
-                    </div>
-                    <div class="col">
-                        <input type="text" name="B07" class="form-control" value="" maxlength="1" />
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col d-flex align-items-start">
-                        <h5>Box 3:  </h5>
-                    </div>
-                    <div class="col">
-                        <input type="text" name="B08" class="form-control" value="" maxlength="1" />
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col d-flex align-items-start">
-                        <h5>Box 4:  </h5>
-                    </div>
-                    <div class="col">
-                        <input type="text" name="B09" class="form-control" value="" maxlength="1" />
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col d-flex align-items-start">
-                        <h5>Box 5:  </h5>
-                    </div>
-                    <div class="col">
-                        <input type="text" name="B10" class="form-control" value="" maxlength="1" />
-                    </div>
+                @*<div class="row justify-content-center mx-1">
+                    <h5>Leave these fields empty if you don't have yellow letters.</h5>
+                </div>*@
+                <div class="row no-gutters mb-3 mx-5 mt-1">
+                    <div class="col p-1 shadow-sm"><input type="text" name="B06" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B07" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B08" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B09" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B10" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
                 </div>
             </div>
             <div class="col col-lg-2"></div>
@@ -124,50 +63,25 @@
         <div class="row justify-content-md-center">
             <div class="col col-lg-2"></div>
             <div class="col-md-auto bg-secondary">
-                <div class="row">
-                    <h5>Enter gray (inaccurate) letters that weren't correct guesses.  Limit 5.</h5>
+                <div class="row justify-content-center mt-3">
+                    <h5>Enter any gray letters.</h5>
                 </div>
-                <div class="row">
-                    <div class="col d-flex align-items-start">
-                         <h5>Box 1:  </h5>
-                    </div>
-                    <div class="col">
-                        <input type="text" name="B11" class="form-control" value="" maxlength="1" />
-                        @*<input asp-for="letter" class="form-control" placeholder="" maxlength="1">
-                        <span asp-validation-for="letter"></span>*@
-                    </div>
+                <div class="row justify-content-center mx-1">
+                    <h5>Limit 10.</h5>
                 </div>
-                <div class="row mt-2">
-                    <div class="col d-flex align-items-start">
-                        <h5>Box 2:  </h5>
-                    </div>
-                    <div class="col">
-                        <input type="text" name="B12" class="form-control" value="" maxlength="1" />
-                    </div>
+                <div class="row row no-gutters mx-5 mt-1">
+                    <div class="col p-1 shadow-sm"><input type="text" name="B11" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B12" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B13" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B14" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B15" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
                 </div>
-                <div class="row mt-2">
-                    <div class="col d-flex align-items-start">
-                        <h5>Box 3:  </h5>
-                    </div>
-                    <div class="col">
-                        <input type="text" name="B13" class="form-control" value="" maxlength="1" />
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col d-flex align-items-start">
-                        <h5>Box 4:  </h5>
-                    </div>
-                    <div class="col">
-                        <input type="text" name="B14" class="form-control" value="" maxlength="1" />
-                    </div>
-                </div>
-                <div class="row mt-2">
-                    <div class="col d-flex align-items-start">
-                        <h5>Box 5:  </h5>
-                    </div>
-                    <div class="col">
-                        <input type="text" name="B15" class="form-control" value="" maxlength="1" />
-                    </div>
+                <div class="row row no-gutters mb-3 mx-5 mt-1">
+                    <div class="col p-1 shadow-sm"><input type="text" name="B16" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B17" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B18" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B19" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B20" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
                 </div>
             </div>
             <div class="col col-lg-2"></div>
@@ -175,9 +89,9 @@
     </div>
 
 
-    <div class="row" >  @*this is the submit button*@
+    <div class="row my-3" >  @*this is the submit button*@
     <div class="mx-auto">
-        <input type="submit" value="Submit" class="btn btn-info" />
+        <input type="submit" value="Submit" class="btn btn-info shadow-sm" />
     </div>
  </div>
  }
@@ -185,7 +99,7 @@
  <table class="table table-hover table-dark text-white">  @*this is the answers table, to be moved later*@
     <thead>
         <tr>
-            <th>Potential answers</th>
+            <th>&#11167; Potential answers &#11167;</th>
         </tr>
     </thead>
 
