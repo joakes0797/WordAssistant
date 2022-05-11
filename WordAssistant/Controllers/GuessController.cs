@@ -13,7 +13,7 @@ namespace WordAssistant.Controllers
             this.repo = repo;
         }
 
-        public IActionResult GuessCheck(GuessViewModel answer) //can i put a Word message param in here for TableHeadMessage?
+        public IActionResult GuessCheck(GuessViewModel answer)
         {
             //------------------------------------------------------green letters
             var greenLetters = "";
@@ -89,6 +89,7 @@ namespace WordAssistant.Controllers
             var results = repo.GetResults(greenLetters, y1, y2, y3, y4, y5, g01, g02, g03, g04, g05, g06, g07, g08, g09, g10);
             var count = results.Count();
             var viewModel = new ResultViewModel();
+
             if (count == 1)
             {
                 viewModel.TableHeadMessage = "Best result";
@@ -104,7 +105,6 @@ namespace WordAssistant.Controllers
             
             viewModel.Words = results;
             return View("../Home/Results", viewModel);
-
         }
     }
 }

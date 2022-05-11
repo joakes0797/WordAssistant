@@ -7,108 +7,79 @@
     <h4>Helping you narrow down today's Wordle answer.</h4>
 </div>
 
-<div class="container"> @*this is the form container*@
+<div class="container"> @*-------------------------this is the form container*@
     @using (Html.BeginForm("GuessCheck", "Guess", "Post"))
     {
-    <div class="container">  @*this is the green letter container*@
-        <div class="row justify-content-md-center">
-            <div class="col col-lg-2"></div>
-            <div class="col-md-auto bg-success">
+    <div class="container mb-2">  @*--------------------this is the green letter container*@
+        <div class="row justify-content-center">
+            <div class="col col-lg-4"></div>
+            <div class="col-12 col-lg-4 bg-success">
                 <div class="row justify-content-center mt-3">
-                    <h5>Enter green letters in their exact spot.</h5>
+                    <h5 style="text-shadow: 2px 2px 3px #3d3d3d;">Enter green letters in their exact spot.</h5>
                 </div>
                 <div class="row no-gutters mb-3 mx-5 mt-1">
-                    <div class="col p-1 shadow-sm"><input type="text" name="B01" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
-                    <div class="col p-1 shadow-sm"><input type="text" name="B02" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
-                    <div class="col p-1 shadow-sm"><input type="text" name="B03" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
-                    <div class="col p-1 shadow-sm"><input type="text" name="B04" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
-                    <div class="col p-1 shadow-sm"><input type="text" name="B05" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B01" pattern="[a-zA-Z]" title="No spaces, numbers, or special characters." class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B02" pattern="[a-zA-Z]" title="No spaces, numbers, or special characters." class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B03" pattern="[a-zA-Z]" title="No spaces, numbers, or special characters." class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B04" pattern="[a-zA-Z]" title="No spaces, numbers, or special characters." class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B05" pattern="[a-zA-Z]" title="No spaces, numbers, or special characters." class="form-control" value="" maxlength="1" /></div>
                 </div>
             </div>
-            <div class="col col-lg-2"></div>
+            <div class="col col-lg-4"></div>
         </div>
     </div>
 
 
-    <div class="container">  @*this is the yellow letter container*@
-        <div class="row justify-content-md-center">
-            <div class="col col-lg-2"></div>
-            <div class="col-md-auto bg-warning">
+    <div class="container mb-2">  @*---------------------this is the yellow letter container*@
+        <div class="row justify-content-center">
+            <div class="col col-lg-4"></div>
+            <div class="col-12 col-lg-4 bg-warning">
                 <div class="row justify-content-center mt-3">
-                    <h5>Enter any yellow letters.</h5>
+                    <h5 style="text-shadow: 2px 2px 3px #3d3d3d;">Enter any yellow letters.</h5>
                 </div>
                 <div class="row no-gutters mb-3 mx-5 mt-1">
-                    <div class="col p-1 shadow-sm"><input type="text" name="B06" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
-                    <div class="col p-1 shadow-sm"><input type="text" name="B07" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
-                    <div class="col p-1 shadow-sm"><input type="text" name="B08" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
-                    <div class="col p-1 shadow-sm"><input type="text" name="B09" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
-                    <div class="col p-1 shadow-sm"><input type="text" name="B10" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B06" pattern="[a-zA-Z]" title="No spaces, numbers, or special characters." class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B07" pattern="[a-zA-Z]" title="No spaces, numbers, or special characters." class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B08" pattern="[a-zA-Z]" title="No spaces, numbers, or special characters." class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B09" pattern="[a-zA-Z]" title="No spaces, numbers, or special characters." class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B10" pattern="[a-zA-Z]" title="No spaces, numbers, or special characters." class="form-control" value="" maxlength="1" /></div>
                 </div>
             </div>
-            <div class="col col-lg-2"></div>
+            <div class="col col-lg-4"></div>
         </div>
     </div>
 
-    <div class="container">  @*this is the gray letter container*@
-        <div class="row justify-content-md-center">
-            <div class="col col-lg-2"></div>
-            <div class="col-md-auto bg-secondary">
+    <div class="container">  @*---------------------this is the gray letter container*@
+        <div class="row justify-content-center">
+            <div class="col col-lg-4"></div>
+            <div class="col-12 col-lg-4 bg-secondary">
                 <div class="row justify-content-center mt-3">
-                    <h5>Enter any gray letters.</h5>
-                </div>
-                <div class="row justify-content-center mx-1">
-                    <h5>Limit 10.</h5>
+                    <h5 style="text-shadow: 2px 2px 3px #3d3d3d;">Enter up to 10 gray letters.</h5>
                 </div>
                 <div class="row row no-gutters mx-5 mt-1">
-                    <div class="col p-1 shadow-sm"><input type="text" name="B11" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
-                    <div class="col p-1 shadow-sm"><input type="text" name="B12" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
-                    <div class="col p-1 shadow-sm"><input type="text" name="B13" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
-                    <div class="col p-1 shadow-sm"><input type="text" name="B14" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
-                    <div class="col p-1 shadow-sm"><input type="text" name="B15" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B11" pattern="[a-zA-Z]" title="No spaces, numbers, or special characters." class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B12" pattern="[a-zA-Z]" title="No spaces, numbers, or special characters." class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B13" pattern="[a-zA-Z]" title="No spaces, numbers, or special characters." class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B14" pattern="[a-zA-Z]" title="No spaces, numbers, or special characters." class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B15" pattern="[a-zA-Z]" title="No spaces, numbers, or special characters." class="form-control" value="" maxlength="1" /></div>
                 </div>
                 <div class="row row no-gutters mb-3 mx-5 mt-1">
-                    <div class="col p-1 shadow-sm"><input type="text" name="B16" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
-                    <div class="col p-1 shadow-sm"><input type="text" name="B17" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
-                    <div class="col p-1 shadow-sm"><input type="text" name="B18" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
-                    <div class="col p-1 shadow-sm"><input type="text" name="B19" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
-                    <div class="col p-1 shadow-sm"><input type="text" name="B20" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B16" pattern="[a-zA-Z]" title="No spaces, numbers, or special characters." class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B17" pattern="[a-zA-Z]" title="No spaces, numbers, or special characters." class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B18" pattern="[a-zA-Z]" title="No spaces, numbers, or special characters." class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B19" pattern="[a-zA-Z]" title="No spaces, numbers, or special characters." class="form-control" value="" maxlength="1" /></div>
+                    <div class="col p-1 shadow-sm"><input type="text" name="B20" pattern="[a-zA-Z]" title="No spaces, numbers, or special characters." class="form-control" value="" maxlength="1" /></div>
                 </div>
             </div>
-            <div class="col col-lg-2"></div>
+            <div class="col col-lg-4"></div>
         </div>
     </div>
 
 
-    <div class="row my-3" >  @*this is the submit button*@
+    <div class="row my-3" >  @*---------------------this is the submit button*@
     <div class="mx-auto">
         <input type="submit" value="Submit" class="btn btn-info shadow-sm" />
     </div>
  </div>
  }
-
-@* <table class="table table-hover table-dark text-white">  this is the answers table, to be moved later
-    <thead>
-        <tr>
-            <th>&#11167; Potential answers &#11167;</th>
-        </tr>
-    </thead>
-
-	<tbody>		
-        @foreach (var word in Model)
-            {
-
-                <tr>
-                    <td>@word.Name</td>
-                </tr>
-            }
-	</tbody>		
-</table>*@
-
-
-
-
-
-
-
-
 </div>

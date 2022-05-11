@@ -1,5 +1,4 @@
-﻿
-namespace WordAssistant.Models
+﻿namespace WordAssistant.Models
 {
     public class GuessViewModel
     {

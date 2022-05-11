@@ -1,5 +1,3 @@
-using System;
-
 namespace WordAssistant.Models
 {
     public class ErrorViewModel
