@@ -1,14 +1,8 @@
 ﻿
-using Microsoft.AspNetCore.Mvc;
-
 namespace WordAssistant.Models
 {
-    public class Guess
+    public class GuessViewModel
     {
-        public int ID { get; set; }
-        public string GreenCheck { get; set; }
-        public string YellowCheck { get; set; }
-        public string GreyCheck { get; set; }
         public string B01 { get; set; }
         public string B02 { get; set; }
         public string B03 { get; set; }
@@ -29,11 +23,5 @@ namespace WordAssistant.Models
         public string B18 { get; set; }
         public string B19 { get; set; }
         public string B20 { get; set; }
-
-
-        public Guess()
-        {
-
-        }
     }
 }

@@ -1,9 +1,5 @@
-﻿@model IEnumerable<Word>
-@{
+﻿@{
     ViewData["Title"] = "Help for Wordle";
-}
-@section scripts{
-    <partial name="_ValidationScriptsPartial" />
 }
 
 <div class="container text-center mb-4">
@@ -21,9 +17,6 @@
                 <div class="row justify-content-center mt-3">
                     <h5>Enter green letters in their exact spot.</h5>
                 </div>
-                @*<div class="row justify-content-center mx-1">
-                    <h5>Leave these fields empty if you don't have green letters.</h5>
-                </div>*@
                 <div class="row no-gutters mb-3 mx-5 mt-1">
                     <div class="col p-1 shadow-sm"><input type="text" name="B01" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
                     <div class="col p-1 shadow-sm"><input type="text" name="B02" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
@@ -44,9 +37,6 @@
                 <div class="row justify-content-center mt-3">
                     <h5>Enter any yellow letters.</h5>
                 </div>
-                @*<div class="row justify-content-center mx-1">
-                    <h5>Leave these fields empty if you don't have yellow letters.</h5>
-                </div>*@
                 <div class="row no-gutters mb-3 mx-5 mt-1">
                     <div class="col p-1 shadow-sm"><input type="text" name="B06" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
                     <div class="col p-1 shadow-sm"><input type="text" name="B07" pattern="[a-zA-Z]" class="form-control" value="" maxlength="1" /></div>
@@ -96,7 +86,7 @@
  </div>
  }
 
- <table class="table table-hover table-dark text-white">  @*this is the answers table, to be moved later*@
+@* <table class="table table-hover table-dark text-white">  this is the answers table, to be moved later
     <thead>
         <tr>
             <th>&#11167; Potential answers &#11167;</th>
@@ -112,7 +102,7 @@
                 </tr>
             }
 	</tbody>		
-</table>
+</table>*@
 
 
 
