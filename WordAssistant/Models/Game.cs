@@ -6,10 +6,6 @@ namespace WordAssistant.Models
 {
     public class Game
     {
-        public Game()
-        {
-        }
-
         public int GameID { get; set; } //don't need for "Log a New Game" b/c auto-increment
         public int WordID { get; set; }
         public bool WinLoss { get; set; }
